@@ -6,6 +6,7 @@ import { useState } from 'react';
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [
     signInWithEmailAndPassword,
     user,
@@ -20,6 +21,11 @@ export function Login() {
       signInWithEmailAndPassword(email, password);
     }
   }
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
 
   if (error) {
     if(error.code == 'auth/invalid-login-credentials'){
@@ -59,7 +65,7 @@ export function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-bg-login text-font-main-login">
       <form
-        className="flex flex-col gap-5 bg-bg-display-login p-8 rounded-md"
+        className="flex flex-col gap-5 min-w-[350px] bg-bg-display-login p-8 rounded-md"
         onSubmit={handleSubmit}>
         <h1
           className="m-auto text-lg font-semibold">User login</h1>
@@ -77,15 +83,16 @@ export function Login() {
         </label>
         <label
           htmlFor="password"
-          className="flex flex-col">
+          className="flex flex-col relative">
           <p className="text-[15px] font-medium">Password</p>
           <input
-            type="password"
+            type={passwordVisible ? 'text' : 'password'}
             id="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="h-[40px] rounded-sm bg-bg-input border-none outline-none p-2 text-slate-500" />
+            className=" text-sm password h-[40px] rounded-sm bg-bg-input border-none outline-none p-2 text-slate-500" />
+            <i onClick={togglePasswordVisibility} className={`cursor-pointer absolute top-[35px] right-[10px] ${passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'}`}></i>
         </label>
         <Link
           to='/register'
