@@ -51,19 +51,35 @@ export function Register() {
   };
 
   if (error) {
-    setTimeout(() => {
-      navigate('/');
-    }, 4000);
+    if (error.code == 'auth/email-already-in-use') {
+      setTimeout(() => {
+        window.location.reload();
+      }, 4000);
 
-    return (
-      <div className='flex items-center justify-center min-h-screen bg-bg-login text-font-main-login'>
-        <div className='flex flex-col items-center justify-center gap-2 '>
-          <h1 className='text-5xl font-semibold'>Error</h1>
-          <h2 className='text-3xl font-semibold'>We are working on it</h2>
-          <h2 className='text-1xl font-semibold'>Redirecting...</h2>
+      return (
+        <div className='flex items-center justify-center min-h-screen bg-bg-login text-font-main-login'>
+          <div className='flex flex-col items-center justify-center gap-2 '>
+            <h1 className='text-5xl font-semibold'>Error</h1>
+            <h2 className='text-2xl font-semibold'>Email &ldquo;{email}&ldquo; already in use</h2>
+            <h2 className='text-1xl font-semibold'>Redirecting...</h2>
+          </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      setTimeout(() => {
+        navigate('/');
+      }, 4000);
+
+      return (
+        <div className='flex items-center justify-center min-h-screen bg-bg-login text-font-main-login'>
+          <div className='flex flex-col items-center justify-center gap-2 '>
+            <h1 className='text-5xl font-semibold'>Error</h1>
+            <h2 className='text-3xl font-semibold'>We are working on it</h2>
+            <h2 className='text-1xl font-semibold'>Redirecting...</h2>
+          </div>
+        </div>
+      )
+    }
   }
 
   if (loading) {
