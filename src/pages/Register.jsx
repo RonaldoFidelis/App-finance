@@ -1,9 +1,12 @@
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../service/firebaseConfig';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 export function Register() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -20,9 +23,9 @@ export function Register() {
   ] = useCreateUserWithEmailAndPassword(auth);
 
   const handleSubmit = () => {
-    if(passwordValidation){
+    if (passwordValidation) {
       createUserWithEmailAndPassword(email, password);
-    }else{
+    } else {
       window.alert('Senhas diferentes');
       return;
     }
@@ -32,7 +35,7 @@ export function Register() {
     if (confirmPassword != '' && confirmPassword == password) {
       setStyleError('border-2 border-green-500');
       setPasswordValidation(true)
-    } 
+    }
     if (confirmPassword !== password) {
       setStyleError('border-2 border-red-500');
       setPasswordValidation(false)
@@ -46,7 +49,32 @@ export function Register() {
   const togglePasswordConfirmVisibility = () => {
     setPassworConfirmdVisible(!passwordConfirmVisible);
   };
-  
+
+  if (loading) {
+    return (
+      <div className='flex items-center justify-center min-h-screen bg-bg-login text-font-main-login'>
+        <i className="text-[70px] absolute animate-spin fa-solid fa-spinner"></i>
+      </div>
+    )
+  }
+
+  if (user) {
+    setTimeout(() => {
+      navigate('/');
+    }, 4000);
+
+    return (
+      <div className='min-h-screen flex items-center justify-center bg-bg-login text-font-main-login'>
+        <div
+          className='flex flex-col items-center justify-center gap-2'>
+          <h1 className='text-4xl text-center text-font-main-login'>Success!</h1>
+          <h1 className='text-2xl text-center text-font-main-login'>You account register sucessful!</h1>
+          <h1 className='text-1xl text-center text-font-main-login'>Redirecting...</h1>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-bg-login text-font-main-login">
       <form
@@ -77,7 +105,7 @@ export function Register() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className=" text-sm password h-[40px] rounded-sm bg-bg-input border-none outline-none p-2 text-slate-500" />
-            <i onClick={togglePasswordVisibility} className={`cursor-pointer absolute top-[35px] right-[10px] ${passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'}`}></i>
+          <i onClick={togglePasswordVisibility} className={`cursor-pointer absolute top-[35px] right-[10px] ${passwordVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'}`}></i>
         </label>
 
         <label
@@ -91,7 +119,7 @@ export function Register() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             className={` text-sm password h-[40px] rounded-sm bg-bg-input p-2 text-slate-500 ${styleError} outline-none`} />
-            <i onClick={togglePasswordConfirmVisibility} className={`cursor-pointer absolute top-[35px] right-[10px] ${passwordConfirmVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'} `}></i>
+          <i onClick={togglePasswordConfirmVisibility} className={`cursor-pointer absolute top-[35px] right-[10px] ${passwordConfirmVisible ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'} `}></i>
         </label>
         <Link
           to='/'
