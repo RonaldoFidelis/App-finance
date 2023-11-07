@@ -50,6 +50,22 @@ export function Register() {
     setPassworConfirmdVisible(!passwordConfirmVisible);
   };
 
+  if (error) {
+    setTimeout(() => {
+      navigate('/');
+    }, 4000);
+
+    return (
+      <div className='flex items-center justify-center min-h-screen bg-bg-login text-font-main-login'>
+        <div className='flex flex-col items-center justify-center gap-2 '>
+          <h1 className='text-5xl font-semibold'>Error</h1>
+          <h2 className='text-3xl font-semibold'>We are working on it</h2>
+          <h2 className='text-1xl font-semibold'>Redirecting...</h2>
+        </div>
+      </div>
+    )
+  }
+
   if (loading) {
     return (
       <div className='flex items-center justify-center min-h-screen bg-bg-login text-font-main-login'>
@@ -68,8 +84,8 @@ export function Register() {
         <div
           className='flex flex-col items-center justify-center gap-2'>
           <h1 className='text-4xl text-center text-font-main-login'>Success!</h1>
-          <h1 className='text-2xl text-center text-font-main-login'>You account register sucessful!</h1>
-          <h1 className='text-1xl text-center text-font-main-login'>Redirecting...</h1>
+          <h2 className='text-2xl text-center text-font-main-login'>You account register sucessful!</h2>
+          <h2 className='text-1xl text-center text-font-main-login'>Redirecting...</h2>
         </div>
       </div>
     )
