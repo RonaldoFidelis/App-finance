@@ -1,4 +1,4 @@
-<h1 align=center> App de finanças pessoais (Em desenvolvimento) </h1>
+<h1 align=center> Chat (Em desenvolvimento) </h1>
 
 <br>
 
@@ -7,13 +7,10 @@
 
 ## Objetivo
 
-- Desenvolver uma aplicação web para armazena dados simples de gastos e investimentos pessoais.
 
 ## Funcionalidades essenciais
 
 - Autentificação de login e cadastro de usuarios.
-- Adicionar dados por tipos, exemplo: investimento, saúde, lazer... 
-- Listar os dados de acordo com o tipo. 
 
 ## 🚀 Tecnologias usadas:
 
