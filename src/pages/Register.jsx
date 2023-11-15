@@ -60,8 +60,8 @@ export function Register() {
         <div className='flex items-center justify-center min-h-screen bg-bg-login text-font-main-login'>
           <div className='flex flex-col items-center justify-center gap-2 '>
             <h1 className='text-5xl font-semibold'>Error</h1>
-            <h2 className='text-2xl font-semibold'>Email &ldquo;{email}&ldquo; already in use</h2>
-            <h2 className='text-1xl font-semibold'>Redirecting...</h2>
+            <h2 className='text-2xl font-semibold'>Email &ldquo;{email}&ldquo; já está sendo usado</h2>
+            <h2 className='text-1xl font-semibold'>Redirecionando...</h2>
           </div>
         </div>
       )
@@ -99,9 +99,9 @@ export function Register() {
       <div className='min-h-screen flex items-center justify-center bg-bg-login text-font-main-login'>
         <div
           className='flex flex-col items-center justify-center gap-2'>
-          <h1 className='text-4xl text-center text-font-main-login'>Success!</h1>
-          <h2 className='text-2xl text-center text-font-main-login'>You account register sucessful!</h2>
-          <h2 className='text-1xl text-center text-font-main-login'>Redirecting...</h2>
+          <h1 className='text-4xl text-center text-font-main-login'>Successo!</h1>
+          <h2 className='text-2xl text-center text-font-main-login'>Sua conta foi criada!</h2>
+          <h2 className='text-1xl text-center text-font-main-login'>Redirecionando...</h2>
         </div>
       </div>
     )
@@ -129,7 +129,7 @@ export function Register() {
         <label
           htmlFor="password"
           className="flex flex-col relative">
-          <p className="text-[15px] font-medium">Password</p>
+          <p className="text-[15px] font-medium">Senha</p>
           <input
             type={passwordVisible ? 'text' : 'password'}
             id="password"
@@ -143,7 +143,7 @@ export function Register() {
         <label
           htmlFor="confirmPassword"
           className="flex flex-col relative">
-          <p className="text-[15px] font-medium">Confirm Password</p>
+          <p className="text-[15px] font-medium">Confirma senha</p>
           <input
             type={passwordConfirmVisible ? 'text' : 'password'}
             id="confirmPassword"
@@ -155,7 +155,7 @@ export function Register() {
         </label>
         <Link
           to='/'
-          className="flex justify-end text-sm hover:text-font-main-login duration-500 text-slate-500">You have access?</Link>
+          className="flex justify-end text-sm hover:text-font-main-login duration-500 text-slate-500">Você tem acesso?</Link>
         <button
           className="bg-btn-login h-[40px] rounded-sm font-medium hover:bg-btn-login-confirm duration-500">Register</button>
       </form>

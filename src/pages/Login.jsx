@@ -2,6 +2,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../service/firebaseConfig';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Chat } from '../components/Chat';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -60,15 +61,18 @@ export function Login() {
   }
 
   if(user) {
-    console.log(user.user);
+    return(
+      <Chat/>
+    )
   }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-bg-login text-font-main-login">
       <form
         className="flex flex-col gap-5 min-w-[350px] bg-bg-display-login p-8 rounded-md"
         onSubmit={handleSubmit}>
         <h1
-          className="m-auto text-lg font-semibold">User login</h1>
+          className="m-auto text-lg font-semibold">Bem-vindo(a)</h1>
         <label
           htmlFor="email"
           className="flex flex-col">
@@ -84,7 +88,7 @@ export function Login() {
         <label
           htmlFor="password"
           className="flex flex-col relative">
-          <p className="text-[15px] font-medium">Password</p>
+          <p className="text-[15px] font-medium">Senha</p>
           <input
             type={passwordVisible ? 'text' : 'password'}
             id="password"
@@ -96,7 +100,7 @@ export function Login() {
         </label>
         <Link
           to='/register'
-          className="flex justify-end text-sm hover:text-font-main-login duration-500 text-slate-500">Don&apos;t have access?</Link>
+          className="flex justify-end text-sm hover:text-font-main-login duration-500 text-slate-500">Não tem acesso?</Link>
         <button
           className="bg-btn-login h-[40px] rounded-sm font-medium hover:bg-btn-login-confirm duration-500">Login</button>
       </form>

@@ -1,13 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCQ_PlrZP-U-vkrqGSGnT5M-biMmTmrs_A",
-  authDomain: "app-finance-33f60.firebaseapp.com",
-  projectId: "app-finance-33f60",
-  storageBucket: "app-finance-33f60.appspot.com",
-  messagingSenderId: "199612082398",
-  appId: "1:199612082398:web:69f710ea75a25b95dffa4f",
-  measurementId: "G-TZ2NGP2C80"
+  apiKey: "AIzaSyDXIbAGQddQqu2k-hN3V5X2H--_VrWx0gU",
+  authDomain: "chat-auth-bb4d3.firebaseapp.com",
+  projectId: "chat-auth-bb4d3",
+  storageBucket: "chat-auth-bb4d3.appspot.com",
+  messagingSenderId: "568642107231",
+  appId: "1:568642107231:web:1ef42fb2a8efb7c3d768ea"
 };
 
 const app = initializeApp(firebaseConfig);
