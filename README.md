@@ -22,6 +22,11 @@
 * **[ Tailwindcss ]()**
 * **[ Css vanila ]()**
 
+
+## Design patterns
+
+- Design patterns são abordagens reutilizáveis para resolver problemas comuns encontrados durante o desenvolvimento de software. A principal meta é refatorar o código à medida que o projeto evolui, seguindo os princípios SOLID de design, promovendo um código mais flexível, escalável e fácil de manter.
+
 ## 📝 Maiores aprendizados
 
 * Em aprendizado...
